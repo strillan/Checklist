@@ -28,9 +28,8 @@ class DateFromText:
             if self.type == 'month':
                 print('smaller month')
         """
-        return self.output_date
+        return str(self.output_date)
 
-    # Used in Checklista   
     def future_date(self, input_date):
         self.construe(input_date=input_date)
         if self.output_date and self.output_date < self.today and self.type:
@@ -42,14 +41,14 @@ class DateFromText:
             elif self.type == 'month':
                 d = self.output_date
                 self.output_date = date(d.year+1, d.month, d.day)
-        return self.output_date
+        return str(self.output_date)
 
     def make_date(self, year=0, month=0, day=0, weekday=0, error=False, today=False):
         if today:
-            self.output_date = self.today
+            new_date = self.today
             return
         if error:
-            self.output_date = False
+            new_date = False
             return
         if not year:
             year = self.today.year
