@@ -46,10 +46,8 @@ class DateFromText:
     def make_date(self, year=0, month=0, day=0, weekday=0, error=False, today=False):
         if today:
             new_date = self.today
-            return
         if error:
-            new_date = False
-            return
+            new_date = self.today
         if not year:
             year = self.today.year
         elif len(year) == 2:
@@ -63,7 +61,7 @@ class DateFromText:
             try:
                 new_date = date(int(year), int(month), int(day))
             except ValueError:
-                new_date = False
+                new_date = self.today
         self.output_date = new_date
         
     def construe(self, input_date):
